@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import Title from './components/Title';
+import { useEffect, useState } from 'react';
 import AddTodo from './components/AddTodo';
 import Todo from './components/Todo';
 import React from 'react';
@@ -8,9 +9,9 @@ import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, QuerySnapshot
 import { db } from "./firebase";
 
 function App() {
-  const [todos, setTodos] = React.useState([]);
+  const [todos, setTodos] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const q = query(collection(db, "todos"));
     const unsub = onSnapshot(q, (QuerySnapshot) => {
       let todosArray = [];
